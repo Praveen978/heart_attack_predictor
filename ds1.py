@@ -119,9 +119,4 @@ st.markdown("""
     **Disclaimer:** This app is not a substitute for professional medical advice. Always consult a healthcare provider for a proper diagnosis and treatment plan.
 """)
 
-# Footer section with contact information
-st.markdown("""
-    <footer style="text-align: center; padding: 20px; background-color: #2a9d8f; color: white;">
-        <p>Developed by <strong>Praveen Kumar</strong> | Contact: <a href="mailto:praveengavalapally@gmail.com" style="color: white;">youremail@example.com</a></p>
-    </footer>
-""", unsafe_allow_html=True)
+
