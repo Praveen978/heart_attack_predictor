@@ -2,6 +2,9 @@ import subprocess
 import sys
 import streamlit as st
 
+import os
+os.system("pip install scikit-learn==1.4.2")
+
 # Check if scikit-learn is installed
 try:
     import sklearn
