@@ -1,3 +1,21 @@
+import subprocess
+import sys
+import streamlit as st
+
+# Check if scikit-learn is installed
+try:
+    import sklearn
+    st.write(f"Scikit-learn version: {sklearn.__version__}")
+except ImportError:
+    st.error("Scikit-learn is not installed.")
+
+# Check all installed packages
+installed_packages = subprocess.check_output([sys.executable, "-m", "pip", "freeze"])
+st.text(installed_packages.decode("utf-8"))
+
+
+
+
 from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
