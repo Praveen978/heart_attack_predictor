@@ -1,20 +1,25 @@
+import os
+os.system("pip install --upgrade pip")
+os.system("pip install scikit-learn==1.4.2 pandas numpy joblib Pillow")
+
 import subprocess
 import sys
 import streamlit as st
 
-import os
-os.system("pip install scikit-learn==1.4.2")
-
-# Check if scikit-learn is installed
 try:
     import sklearn
     st.write(f"Scikit-learn version: {sklearn.__version__}")
-except ImportError:
+except ImportError as e:
     st.error("Scikit-learn is not installed.")
+    st.write(str(e))
 
-# Check all installed packages
-installed_packages = subprocess.check_output([sys.executable, "-m", "pip", "freeze"])
-st.text(installed_packages.decode("utf-8"))
+# List all installed packages
+try:
+    installed_packages = subprocess.check_output([sys.executable, "-m", "pip", "freeze"])
+    st.text(installed_packages.decode("utf-8"))
+except Exception as e:
+    st.error("Failed to list installed packages.")
+    st.write(str(e))
 
 
 
