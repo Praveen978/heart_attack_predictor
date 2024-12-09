@@ -46,12 +46,10 @@ st.markdown("""
     Enter the patient's details below and hit "Predict" to get a result.
 """)
 
-# Sidebar for user input
-st.sidebar.header("Enter Patient Details")
-
 # Input fields for user data
-age = st.sidebar.number_input("Age", min_value=20, max_value=100, value=50, step=1)
-sex = st.sidebar.selectbox("Sex (1=Male, 0=Female)", [1, 0])
+st.header("Enter Patient Details")
+age = st.number_input("Age", min_value=20, max_value=100, value=50, step=1)
+sex = st.selectbox("Sex (1=Male, 0=Female)", [1, 0])
 
 # Chest Pain Type with descriptive labels
 cp_options = {
@@ -60,31 +58,28 @@ cp_options = {
     2: "Non-Anginal Pain",
     3: "Asymptomatic"
 }
-cp = st.sidebar.selectbox(
+cp = st.selectbox(
     "Chest Pain Type",
     options=list(cp_options.keys()),
     format_func=lambda x: f"{x} - {cp_options[x]}"
 )
 
-# Other user inputs
-st.sidebar.image("hypertension.png", use_column_width=False, width=100, caption="ECG Monitoring")
-trestbps = st.sidebar.slider("Resting Blood Pressure (mm Hg)", 80, 200, 120)
-chol = st.sidebar.slider("Cholesterol Level (mg/dL)", 100, 600, 200)
-fbs = st.sidebar.selectbox("Fasting Blood Sugar > 120 mg/dL (1=True, 0=False)", [1, 0])
-st.sidebar.image("ecg.png", use_column_width=False, width=100, caption="ECG Monitoring")
-restecg = st.sidebar.slider("Resting ECG Results (0-2)", 0, 2, 1)
-thalach = st.sidebar.slider("Maximum Heart Rate Achieved", 50, 220, 150)
-exang = st.sidebar.selectbox("Exercise-Induced Angina (1=Yes, 0=No)", [1, 0])
-oldpeak = st.sidebar.slider("ST Depression Induced by Exercise", 0.0, 5.0, 1.0)
-slope = st.sidebar.slider("Slope of ST Segment (0-2)", 0, 2, 1)
-ca = st.sidebar.slider("Number of Major Vessels (0-4)", 0, 4, 0)
-thal = st.sidebar.slider("Thalassemia (0-3)", 0, 3, 2)
+trestbps = st.slider("Resting Blood Pressure (mm Hg)", 80, 200, 120)
+chol = st.slider("Cholesterol Level (mg/dL)", 100, 600, 200)
+fbs = st.selectbox("Fasting Blood Sugar > 120 mg/dL (1=True, 0=False)", [1, 0])
+restecg = st.slider("Resting ECG Results (0-2)", 0, 2, 1)
+thalach = st.slider("Maximum Heart Rate Achieved", 50, 220, 150)
+exang = st.selectbox("Exercise-Induced Angina (1=Yes, 0=No)", [1, 0])
+oldpeak = st.slider("ST Depression Induced by Exercise", 0.0, 5.0, 1.0)
+slope = st.slider("Slope of ST Segment (0-2)", 0, 2, 1)
+ca = st.slider("Number of Major Vessels (0-4)", 0, 4, 0)
+thal = st.slider("Thalassemia (0-3)", 0, 3, 2)
 
 # Display the entered data summary
 st.subheader("Patient's Data Summary:")
 st.write(f"Age: {age}")
 st.write(f"Sex: {'Male' if sex == 1 else 'Female'}")
-st.write(f"Chest Pain Type: {cp}")
+st.write(f"Chest Pain Type: {cp} - {cp_options[cp]}")
 st.write(f"Resting Blood Pressure: {trestbps} mm Hg")
 st.write(f"Cholesterol Level: {chol} mg/dL")
 st.write(f"Fasting Blood Sugar > 120 mg/dL: {'Yes' if fbs == 1 else 'No'}")
@@ -118,5 +113,3 @@ st.markdown("""
 
     **Disclaimer:** This app is not a substitute for professional medical advice. Always consult a healthcare provider for a proper diagnosis and treatment plan.
 """)
-
-
